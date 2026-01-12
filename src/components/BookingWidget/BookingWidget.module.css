@@ -1,0 +1,86 @@
+.widget {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: white;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 40px;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e0e0e0;
+  padding-left: 24px;
+  min-width: 265px;
+}
+
+.centerColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #e0e0e0;
+  padding-right: 24px;
+  min-width: 320px;
+  max-height: 440px;
+}
+
+.formContent,
+.successContent {
+  padding: 30px;
+  min-height: 400px;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .leftColumn {
+    order: 1;
+  }
+
+  .centerColumn {
+    order: 2;
+  }
+
+  .rightColumn {
+    order: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .widget {
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .header {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .content,
+  .formContent,
+  .successContent {
+    padding: 20px;
+  }
+}

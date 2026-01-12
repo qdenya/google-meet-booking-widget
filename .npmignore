@@ -1,0 +1,16 @@
+src/
+node_modules/
+.github/
+.vscode/
+*.log
+.env
+.env.*
+example.html
+index.html
+vite.config.ts
+tsconfig.*.json
+eslint.config.js
+.gitignore
+demo.ts
+demo.css
+public/

@@ -1,0 +1,118 @@
+.container {
+  background: white;
+  border-radius: 12px;
+  padding: 30px 20px 0px 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  color: #333;
+  text-align: center;
+}
+
+.message {
+  text-align: center;
+  color: #999;
+  padding: 40px 0;
+  margin: 0;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error {
+  text-align: center;
+  color: #ff4444;
+  padding: 20px;
+  margin: 0;
+}
+
+.slotsList {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 16px;
+  max-height: 270px;
+}
+
+.slotButton {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  align-items: center;
+  border: 1px solid #6E6E6E;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+
+.slotButton.selected {
+  border-color: #007AFF;
+  background: #007AFF;
+}
+
+.slotButton.selected .slotTime,
+.slotButton.selected .slotDuration {
+  color: white;
+}
+
+.slotTime {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  color: #2C2C2E;
+}
+
+.slotDuration {
+  position: absolute;
+  right: 0;
+  font-size: 14px;
+  color: #999;
+}
+
+.continueButton {
+  width: 100%;
+  padding: 14px 28px;
+  background: #5950E7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.continueButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

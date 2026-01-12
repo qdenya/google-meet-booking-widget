@@ -1,0 +1,95 @@
+.calendar {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.monthYear {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.month {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #333;
+}
+
+.year {
+  font-size: 18px;
+  font-weight: 400;
+  color: #333;
+}
+
+.navigation {
+  display: flex;
+  gap: 4px;
+}
+
+.navButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+
+.weekDays {
+  display: grid;
+  grid-template-columns: repeat(7, 45px);
+  gap: 8px;
+  margin-bottom: 8px;
+  justify-content: center;
+}
+
+.weekDay {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #999;
+  padding: 8px 0;
+}
+
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 48px);
+  gap: 8px;
+  justify-content: center;
+}
+
+.dayCell {
+  width: 48px;
+  height: 48px;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 100;
+  font-family: sans-serif;
+  transition: all 0.2s;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+}
+
+.dayCell.selected {
+  background: #007AFF;
+  color: white;
+}
+
+.dayCell.disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}

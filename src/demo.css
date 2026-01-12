@@ -1,0 +1,17 @@
+:root {
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+#app {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Пример встраивания - Google Meet Booking Widget</title>
+  
+  <!-- Стили виджета из CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@your-username/google-meet-booking-widget/dist/style.css">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Контейнер для виджета -->
+  <div id="booking-widget"></div>
+
+  <!-- Подключение виджета из CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@your-username/google-meet-booking-widget"></script>
+  
+  <!-- Инициализация виджета -->
+  <script>
+    // Ждем загрузки DOM
+    document.addEventListener('DOMContentLoaded', function() {
+      // Инициализируем виджет
+      GoogleMeetBooking.init('booking-widget', {
+        // URL вашего backend API
+        apiUrl: 'https://your-api-domain.com',
+        
+        // API токен клиента (получить в админ-панели)
+        apiToken: 'gma_your_api_token_here',
+        
+        // Информация о специалисте (опционально)
+        specialist: {
+          name: 'Иван Петров',
+          description: 'Эксперт по веб-разработке с 10+ летним опытом',
+          email: 'ivan@example.com',
+          photo: 'https://your-domain.com/photo.jpg' // необязательно
+        },
+        
+        // Кастомная тема (опционально)
+        theme: {
+          primaryColor: '#667eea',
+          secondaryColor: '#764ba2'
+        }
+      });
+    });
+  </script>
+</body>
+</html>
