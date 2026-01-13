@@ -43,8 +43,17 @@
 /* Адаптивность */
 @media (max-width: 1024px) {
   .content {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .leftColumn,
+  .rightColumn {
+    border: none;
+    padding: 0;
+    min-width: auto;
+    max-height: none;
   }
 
   .leftColumn {
@@ -63,24 +72,16 @@
 @media (max-width: 768px) {
   .widget {
     border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
 
-  .header {
-    padding: 20px;
+  .content {
+    padding: 16px;
+    gap: 16px;
   }
 
-  .title {
-    font-size: 22px;
-  }
-
-  .subtitle {
-    font-size: 14px;
-  }
-
-  .content,
   .formContent,
   .successContent {
     padding: 20px;
+    min-height: auto;
   }
 }

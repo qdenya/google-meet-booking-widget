@@ -68,21 +68,22 @@
   background: white;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s;
   font-family: inherit;
   position: relative;
   margin-bottom: 20px;
+  transition: all 0.1s ease;
 }
 
 
 .slotButton.selected {
   border-color: #007AFF;
-  background: #007AFF;
+  border: 2px solid #007AFF;
 }
 
 .slotButton.selected .slotTime,
 .slotButton.selected .slotDuration {
-  color: white;
+  color: #007AFF;
+  
 }
 
 .slotTime {
@@ -101,8 +102,8 @@
 
 .continueButton {
   width: 100%;
-  padding: 14px 28px;
-  background: #5950E7;
+  height: 44px;
+  background: #007AFF;
   color: white;
   border: none;
   border-radius: 8px;
@@ -115,4 +116,60 @@
 .continueButton:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .container {
+    max-height: none;
+  }
+
+  .slotsList {
+    max-height: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .slotButton {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 16px 0 16px;
+  }
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .slotsList {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .slotButton {
+    min-height: 40px;
+    font-size: 14px;
+  }
+
+  .continueButton {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slotsList {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .slotButton {
+    font-size: 13px;
+  }
 }

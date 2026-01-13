@@ -93,3 +93,69 @@
   color: #ccc;
   cursor: not-allowed;
 }
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .calendar {
+    padding: 16px;
+  }
+
+  .header {
+    margin-bottom: 16px;
+  }
+
+  .month {
+    font-size: 16px;
+  }
+
+  .year {
+    font-size: 16px;
+  }
+
+  .navButton {
+    font-size: 20px;
+  }
+
+  .weekDays {
+    grid-template-columns: repeat(7, 40px);
+    gap: 4px;
+  }
+
+  .weekDay {
+    font-size: 11px;
+    padding: 6px 0;
+  }
+
+  .daysGrid {
+    grid-template-columns: repeat(7, 40px);
+    gap: 4px;
+  }
+
+  .dayCell {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar {
+    padding: 12px;
+  }
+
+  .weekDays {
+    grid-template-columns: repeat(7, 36px);
+    gap: 2px;
+  }
+
+  .daysGrid {
+    grid-template-columns: repeat(7, 36px);
+    gap: 2px;
+  }
+
+  .dayCell {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+}
