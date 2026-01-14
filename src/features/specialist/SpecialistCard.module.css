@@ -114,58 +114,66 @@
 
 /* Адаптивность */
 @media (max-width: 1024px) {
-  .card {
+    /* .card {
     flex-direction: row;
     align-items: center;
     gap: 16px;
-  }
+  } */
 
-  .photoContainer {
-    margin-bottom: 0;
-  }
+    .photoContainer {
+        margin-bottom: 0;
+    }
 
-  .info {
+    /* .info {
     flex-direction: row;
     gap: 12px;
     flex-wrap: wrap;
-  }
+  } */
 
-  .infoItem {
-    flex: 0 1 auto;
-  }
+    .infoItem {
+        flex: 0 1 auto;
+    }
 }
 
 @media (max-width: 768px) {
-  .card {
-    padding: 16px;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    .photo,
+    .photoPlaceholder {
+        width: 56px;
+        height: 56px;
+    }
 
-  .photo,
-  .photoPlaceholder {
-    width: 56px;
-    height: 56px;
-  }
+    .initials {
+        font-size: 18px;
+    }
 
-  .initials {
-    font-size: 18px;
-  }
+    .name {
+        font-size: 18px;
+    }
 
-  .name {
-    font-size: 18px;
-  }
+    .description {
+        font-size: 13px;
+    }
 
-  .description {
-    font-size: 13px;
-  }
+    .divider {
+        margin: 16px 0;
+    }
 
-  .divider {
-    margin: 16px 0;
-  }
+    .info {
+        flex-direction: column;
+        gap: 8px;
+    }
 
-  .info {
-    flex-direction: column;
-    gap: 8px;
-  }
+    .infoItem {
+        margin-bottom: 0px;
+    }
+}
+
+@media (max-width: 635px) {
+    .card {
+        align-items: center;
+    }
+    .meetInfo {
+        align-items: center;
+        text-align: center;
+    }
 }

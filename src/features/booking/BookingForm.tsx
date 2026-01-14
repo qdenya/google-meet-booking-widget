@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { useCreateBookingMutation } from '../../api/bookingApi';
 import { updateFormData, setCurrentStep, setBookingResult } from './bookingSlice';
+import calendarIcon from '../../assets/calendar.svg';
 import styles from './BookingForm.module.css';
 
 export const BookingForm: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { selectedSlot, formData } = useAppSelector((state) => state.booking);
+  const { selectedSlot, formData, recaptchaToken } = useAppSelector((state) => state.booking);
   const [createBooking, { isLoading }] = useCreateBookingMutation();
   const [error, setError] = useState<string | null>(null);
 
@@ -32,12 +33,27 @@ export const BookingForm: React.FC = () => {
     }
 
     try {
+      // Получаем reCAPTCHA токен если включен
+      let captchaToken = recaptchaToken;
+      
+      if (recaptchaToken && typeof window !== 'undefined' && (window as any).grecaptcha) {
+        try {
+          captchaToken = await (window as any).grecaptcha.execute(recaptchaToken, { action: 'submit' });
+          console.log('reCAPTCHA token generated:', captchaToken?.substring(0, 20) + '...');
+        } catch (err) {
+          console.error('reCAPTCHA error:', err);
+          setError('Ошибка проверки reCAPTCHA');
+          return;
+        }
+      }
+
       const result = await createBooking({
         startTime: selectedSlot.start,
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         description: formData.description,
+        recaptchaToken: captchaToken || undefined,
       }).unwrap();
 
       if (result.success) {
@@ -59,30 +75,35 @@ export const BookingForm: React.FC = () => {
     dispatch(setCurrentStep('calendar'));
   };
 
-  const formatSlotTime = () => {
+  const formatSlotDate = () => {
     if (!selectedSlot) return '';
     const start = new Date(selectedSlot.start);
-    const end = new Date(selectedSlot.end);
-    return `${start.toLocaleDateString('ru-RU', {
+    const dayOfWeek = start.toLocaleDateString('ru-RU', { weekday: 'long' });
+    const date = start.toLocaleDateString('ru-RU', {
       day: 'numeric',
       month: 'long',
       year: 'numeric',
-    })} в ${start.toLocaleTimeString('ru-RU', {
+    });
+    return `${dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1)}, ${date}`;
+  };
+
+  const formatSlotTime = () => {
+    if (!selectedSlot) return '';
+    const start = new Date(selectedSlot.start);
+    return start.toLocaleTimeString('ru-RU', {
       hour: '2-digit',
       minute: '2-digit',
-    })} - ${end.toLocaleTimeString('ru-RU', {
-      hour: '2-digit',
-      minute: '2-digit',
-    })}`;
+    });
   };
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Ваши контактные данные</h2>
-
       <div className={styles.selectedSlot}>
-        <span className={styles.slotIcon}>📅</span>
-        <span className={styles.slotText}>{formatSlotTime()}</span>
+        <img src={calendarIcon} alt="Календарь" className={styles.slotIcon} />
+        <div className={styles.slotInfo}>
+          <div className={styles.slotDate}>{formatSlotDate()}</div>
+          <div className={styles.slotTime}>{formatSlotTime()}</div>
+        </div>
       </div>
 
       {error && <div className={styles.error}>{error}</div>}
@@ -158,7 +179,7 @@ export const BookingForm: React.FC = () => {
             className={styles.backButton}
             disabled={isLoading}
           >
-            ← Назад
+            Назад
           </button>
           <button
             type="submit"

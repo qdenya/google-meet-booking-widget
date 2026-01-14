@@ -18,6 +18,7 @@ interface BookingState {
     startTime: string;
     endTime: string;
   } | null;
+  recaptchaToken: string | null;
 }
 
 const initialState: BookingState = {
@@ -30,6 +31,7 @@ const initialState: BookingState = {
     description: '',
   },
   bookingResult: null,
+  recaptchaToken: null,
 };
 
 const bookingSlice = createSlice({
@@ -48,11 +50,15 @@ const bookingSlice = createSlice({
     setBookingResult: (state, action: PayloadAction<BookingState['bookingResult']>) => {
       state.bookingResult = action.payload;
     },
+    setRecaptchaToken: (state, action: PayloadAction<string | null>) => {
+      state.recaptchaToken = action.payload;
+    },
     resetBooking: (state) => {
       state.currentStep = 'calendar';
       state.selectedSlot = null;
       state.formData = initialState.formData;
       state.bookingResult = null;
+      state.recaptchaToken = null;
     },
   },
 });
@@ -62,6 +68,7 @@ export const {
   setSelectedSlot,
   updateFormData,
   setBookingResult,
+  setRecaptchaToken,
   resetBooking,
 } = bookingSlice.actions;
 
