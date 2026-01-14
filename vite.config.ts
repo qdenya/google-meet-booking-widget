@@ -22,12 +22,10 @@ export default defineConfig({
       fileName: (format) => `google-meet-widget.${format}.js`
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      // Убираем external для standalone сборки
+      // React и ReactDOM будут встроены в bundle
       output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM'
-        }
+        // Удаляем globals - они не нужны для standalone
       }
     }
   }
