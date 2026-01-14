@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             meetSubject: "Онлайн консультация",
             meetDescription: "Google Meet",
             infoLabels: {
-                timeSlot: "30 минут",
+                timeSlot: "60 минут",
                 confirmation: "Требуется подтверждение",
                 videoCall: "Google Meet"
             }
