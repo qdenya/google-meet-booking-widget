@@ -11,10 +11,13 @@ export default defineConfig({
       insertTypesEntry: true,
     })
   ],
+  define: {
+    'process.env.NODE_ENV': JSON.stringify('production')
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'GoogleMeetBookingWidget',
+      name: 'GoogleMeetBooking',
       formats: ['es', 'umd'],
       fileName: (format) => `google-meet-widget.${format}.js`
     },
