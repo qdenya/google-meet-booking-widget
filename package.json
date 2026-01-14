@@ -1,6 +1,6 @@
 {
   "name": "@qdenya/google-meet-booking-widget",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Виджет бронирования встреч Google Meet",
   "type": "module",
   "main": "./dist/google-meet-widget.umd.js",
