@@ -121,17 +121,17 @@
     // Инициализируем модальный виджет и получаем функцию для открытия
     const openBookingModal = GoogleMeetBooking.initModal({
       // URL вашего backend API
-      apiUrl: 'https://your-api-domain.com',
+      apiUrl: 'http://localhost:3000',
       
       // API токен клиента (получить в админ-панели)
-      apiToken: 'gma_your_api_token_here',
+      apiToken: 'gma_00b29c85b65c456394b7e4cd7f39f4aa',
       
       // Информация о специалисте (опционально)
       specialist: {
         name: 'Иван Петров',
         description: 'Эксперт по веб-разработке с 10+ летним опытом',
         email: 'ivan@example.com',
-        photo: 'https://your-domain.com/photo.jpg' // необязательно
+        photo: 'https://i.pravatar.cc/300' // необязательно
       },
       
       // Кастомная тема (опционально)

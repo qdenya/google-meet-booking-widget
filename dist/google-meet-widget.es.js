@@ -15175,7 +15175,7 @@ const Bc = Gy.withTypes(), Sa = Vy.withTypes(), Op = "_calendar_nv465_1", Rp = "
       C
     )) })
   ] });
-}, Zp = "_container_a70pb_1", Kp = "_title_a70pb_10", Jp = "_message_a70pb_18", kp = "_loading_a70pb_25", Fp = "_spinner_a70pb_30", Wp = "_error_a70pb_45", $p = "_slotsList_a70pb_52", Ip = "_slotButton_a70pb_61", Pp = "_selected_a70pb_78", eS = "_slotTime_a70pb_83", tS = "_continueButton_a70pb_103", $e = {
+}, Zp = "_container_1dftj_1", Kp = "_title_1dftj_11", Jp = "_message_1dftj_19", kp = "_loading_1dftj_26", Fp = "_spinner_1dftj_31", Wp = "_error_1dftj_46", $p = "_slotsList_1dftj_53", Ip = "_slotButton_1dftj_62", Pp = "_selected_1dftj_79", eS = "_slotTime_1dftj_84", tS = "_continueButton_1dftj_104", $e = {
   container: Zp,
   title: Kp,
   message: Jp,
@@ -15539,7 +15539,7 @@ const Bc = Gy.withTypes(), Sa = Vy.withTypes(), Op = "_calendar_nv465_1", Rp = "
     ),
     /* @__PURE__ */ P.jsx("button", { onClick: r, className: Le.newBookingButton, children: "Забронировать еще одну встречу" })
   ] });
-}, FS = "_widget_1pjbl_1", WS = "_content_1pjbl_8", $S = "_leftColumn_1pjbl_15", IS = "_centerColumn_1pjbl_23", PS = "_rightColumn_1pjbl_28", eb = "_formContent_1pjbl_37", tb = "_successContent_1pjbl_38", Tl = {
+}, FS = "_widget_1kwlf_1", WS = "_content_1kwlf_8", $S = "_leftColumn_1kwlf_15", IS = "_centerColumn_1kwlf_22", PS = "_rightColumn_1kwlf_27", eb = "_formContent_1kwlf_36", tb = "_successContent_1kwlf_37", Tl = {
   widget: FS,
   content: WS,
   leftColumn: $S,
