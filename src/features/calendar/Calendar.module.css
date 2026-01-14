@@ -138,24 +138,34 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 635px) {
   .calendar {
     padding: 12px;
+    width: 100%;
+    max-width: 100%;
   }
 
   .weekDays {
-    grid-template-columns: repeat(7, 36px);
+    grid-template-columns: repeat(7, 1fr);
     gap: 2px;
+    width: 100%;
+  }
+
+  .weekDay {
+    font-size: 10px;
   }
 
   .daysGrid {
-    grid-template-columns: repeat(7, 36px);
+    grid-template-columns: repeat(7, 1fr);
     gap: 2px;
+    width: 100%;
   }
 
   .dayCell {
-    width: 36px;
-    height: 36px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
     font-size: 14px;
+    min-height: 36px;
   }
 }
