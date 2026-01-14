@@ -2,21 +2,22 @@
   background: white;
   border-radius: 12px;
   padding: 40px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 600px;
   margin: 0 auto;
 }
 
 .icon {
-  font-size: 64px;
-  margin-bottom: 20px;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  display: block;
 }
 
 .title {
   font-size: 28px;
   font-weight: 600;
-  color: #667eea;
+  color: #4285f4;
   margin: 0 0 12px 0;
 }
 
