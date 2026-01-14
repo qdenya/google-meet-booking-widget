@@ -8,7 +8,7 @@
         <!-- Стили виджета из CDN -->
         <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/qdenya/google-meet-booking-widget@v1.0.8/dist/google-meet-booking-widget.css"
+            href="https://cdn.jsdelivr.net/gh/qdenya/google-meet-booking-widget@v1.0.9/dist/google-meet-booking-widget.css"
         />
 
         <style>
@@ -105,7 +105,7 @@
         </div>
 
         <!-- Подключение виджета из CDN -->
-        <script src="https://cdn.jsdelivr.net/gh/qdenya/google-meet-booking-widget@v1.0.8/dist/google-meet-widget.umd.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/qdenya/google-meet-booking-widget@v1.0.9/dist/google-meet-widget.umd.js"></script>
 
         <!-- Инициализация модального виджета -->
         <script>
@@ -119,11 +119,17 @@
 
                 // Информация о специалисте (опционально)
                 specialist: {
-                    name: "Иван Петров",
+                    name: "Денис Дробыш",
                     description:
                         "Эксперт по веб-разработке с 10+ летним опытом",
                     email: "ivan@example.com",
                     photo: "https://i.pravatar.cc/300", // необязательно
+                },
+
+                infoLabels: {
+                    timeSlot: "60 минут",
+                    confirmation: "Требуется подтверждение",
+                    videoCall: "Google Meet"
                 },
 
                 // Кастомная тема (опционально)

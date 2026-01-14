@@ -32,6 +32,13 @@
   position: relative;
 }
 
+@media (max-width: 768px) {
+  .content {
+    max-height: 90vh;
+    height: 90vh;
+  }
+}
+
 @keyframes slideUp {
   from {
     transform: translateY(100%);
