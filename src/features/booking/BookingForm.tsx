@@ -152,7 +152,7 @@ export const BookingForm: React.FC = () => {
             value={formData.phone}
             onChange={handleInputChange}
             className={styles.input}
-            placeholder="+7 (999) 123-45-67"
+            placeholder=""
             required
           />
         </div>

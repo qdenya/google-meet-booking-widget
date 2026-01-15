@@ -1,10 +1,18 @@
 import React from 'react';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { resetBooking } from './bookingSlice';
+import { resetCalendar } from '../calendar/calendarSlice';
 import approveIcon from '../../assets/Approve.svg';
 import styles from './SuccessScreen.module.css';
 
 export const SuccessScreen: React.FC = () => {
+  const dispatch = useAppDispatch();
   const { bookingResult, formData } = useAppSelector((state) => state.booking);
+
+  const handleNewBooking = () => {
+    dispatch(resetBooking());
+    dispatch(resetCalendar());
+  };
 
   const formatDateTime = (isoString: string) => {
     const date = new Date(isoString);
@@ -57,6 +65,10 @@ export const SuccessScreen: React.FC = () => {
           <span className={styles.detailValue}>{formData.phone}</span>
         </div>
       </div>
+
+      <button onClick={handleNewBooking} className={styles.newBookingButton}>
+        Забронировать еще
+      </button>
     </div>
   );
 };

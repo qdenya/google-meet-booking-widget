@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import { setApiConfig } from './api/bookingApi';
+import { resetBooking } from './features/booking/bookingSlice';
+import { resetCalendar } from './features/calendar/calendarSlice';
 import { BookingWidget } from './components/BookingWidget/BookingWidget';
 import { Modal } from './components/Modal/Modal';
 import type { WidgetConfig } from './types';
@@ -82,6 +84,10 @@ function openBookingModal(config: WidgetConfig): void {
 
   // Функция для закрытия модалки
   const closeModal = () => {
+    // Сбрасываем состояние Redux
+    store.dispatch(resetBooking());
+    store.dispatch(resetCalendar());
+    
     if (modalRoot && modalContainer) {
       modalRoot.render(
         React.createElement(

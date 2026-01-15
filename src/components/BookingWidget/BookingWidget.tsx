@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { useGetClientConfigQuery } from '../../api/bookingApi';
-import { setRecaptchaToken } from '../../features/booking/bookingSlice';
+import { setRecaptchaToken, resetBooking } from '../../features/booking/bookingSlice';
+import { resetCalendar } from '../../features/calendar/calendarSlice';
 import { Calendar } from '../../features/calendar/Calendar';
 import { SlotsList } from '../../features/slots/SlotsList';
 import { SpecialistCard } from '../../features/specialist/SpecialistCard';
@@ -59,6 +60,20 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist }) => {
     }
   }, [selectedDate]);
 
+  // Обработчик закрытия SlotsOverlay с возвратом к начальному состоянию
+  const handleCloseSlotsOverlay = () => {
+    setIsSlotsOverlayOpen(false);
+    dispatch(resetBooking());
+    dispatch(resetCalendar());
+  };
+
+  // Обработчик закрытия BookingFormOverlay с возвратом к начальному состоянию
+  const handleCloseFormOverlay = () => {
+    setIsFormOverlayOpen(false);
+    dispatch(resetBooking());
+    dispatch(resetCalendar());
+  };
+
   // Открываем форму в overlay на мобильных и планшетах
   useEffect(() => {
     if (currentStep === 'form' && window.innerWidth <= 1024) {
@@ -103,7 +118,7 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist }) => {
 
           <SlotsOverlay 
             isOpen={isSlotsOverlayOpen} 
-            onClose={() => setIsSlotsOverlayOpen(false)} 
+            onClose={handleCloseSlotsOverlay} 
           />
         </>
       )}
@@ -120,6 +135,10 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist }) => {
             </div>
           </div>
 
+          <BookingFormOverlay
+            isOpen={isFormOverlayOpen}
+            onClose={handleCloseFormOverlay}
+          />
         </>
       )}
 

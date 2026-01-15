@@ -54,11 +54,12 @@ const bookingSlice = createSlice({
       state.recaptchaToken = action.payload;
     },
     resetBooking: (state) => {
+      const savedRecaptchaToken = state.recaptchaToken;
       state.currentStep = 'calendar';
       state.selectedSlot = null;
       state.formData = initialState.formData;
       state.bookingResult = null;
-      state.recaptchaToken = null;
+      state.recaptchaToken = savedRecaptchaToken;
     },
   },
 });

@@ -31,8 +31,12 @@ const calendarSlice = createSlice({
       current.setMonth(current.getMonth() - 1);
       state.currentMonth = current.toISOString();
     },
+    resetCalendar: (state) => {
+      state.selectedDate = null;
+      state.currentMonth = new Date().toISOString();
+    },
   },
 });
 
-export const { setSelectedDate, setCurrentMonth, nextMonth, previousMonth } = calendarSlice.actions;
+export const { setSelectedDate, setCurrentMonth, nextMonth, previousMonth, resetCalendar } = calendarSlice.actions;
 export default calendarSlice.reducer;
