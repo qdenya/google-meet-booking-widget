@@ -52,10 +52,14 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist, isInMo
     today.setHours(0, 0, 0, 0);
   }, []);
 
-  // Открываем overlay на мобильных и планшетах при выборе даты (только во встроенном режиме)
+  // Открываем overlay на мобильных и планшетах при выборе даты
+  // На мобильных (<=768px) открываем всегда (даже в модалке), на планшетах/десктопе только во встроенном режиме
   useEffect(() => {
-    if (!isInModal && selectedDate && window.innerWidth <= 1024) {
-      setIsSlotsOverlayOpen(true);
+    if (selectedDate && window.innerWidth <= 1024) {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile || !isInModal) {
+        setIsSlotsOverlayOpen(true);
+      }
     }
   }, [selectedDate, isInModal]);
 
@@ -99,12 +103,10 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist, isInMo
             </div>
           </div>
 
-          {!isInModal && (
-            <SlotsOverlay 
-              isOpen={isSlotsOverlayOpen} 
-              onClose={handleCloseSlotsOverlay}
-            />
-          )}
+          <SlotsOverlay 
+            isOpen={isSlotsOverlayOpen} 
+            onClose={handleCloseSlotsOverlay}
+          />
         </>
       )}
 

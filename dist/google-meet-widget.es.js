@@ -15591,7 +15591,7 @@ const Gu = K1.withTypes(), zl = J1.withTypes(), qp = "_calendar_1kq8r_1", Bp = "
   }, [T, s]), ce.useEffect(() => {
     (/* @__PURE__ */ new Date()).setHours(0, 0, 0, 0);
   }, []), ce.useEffect(() => {
-    !c && d && window.innerWidth <= 1024 && p(!0);
+    d && window.innerWidth <= 1024 && (window.innerWidth <= 768 || !c) && p(!0);
   }, [d, c]);
   const j = () => {
     p(!1), s(Vs()), s(Gs());
@@ -15609,7 +15609,7 @@ const Gu = K1.withTypes(), zl = J1.withTypes(), qp = "_calendar_1kq8r_1", Bp = "
           /* @__PURE__ */ J.jsx("div", { className: Xt.centerColumn, children: /* @__PURE__ */ J.jsx(Wp, {}) }),
           /* @__PURE__ */ J.jsx("div", { className: Xt.rightColumn, children: /* @__PURE__ */ J.jsx(Dh, {}) })
         ] }),
-        !c && /* @__PURE__ */ J.jsx(
+        /* @__PURE__ */ J.jsx(
           a3,
           {
             isOpen: h,
