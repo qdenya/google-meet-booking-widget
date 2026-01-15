@@ -54,10 +54,16 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist, isInMo
     today.setHours(0, 0, 0, 0);
   }, []);
 
-  // Открываем overlay на мобильных и планшетах при выборе даты (только для встроенного режима)
+  // Открываем overlay на мобильных и планшетах при выборе даты
+  // На мобильных (<=768px) открываем всегда, на планшетах (<=1024px) только если не в модалке
   useEffect(() => {
-    if (!isInModal && selectedDate && window.innerWidth <= 1024) {
-      setIsSlotsOverlayOpen(true);
+    if (selectedDate) {
+      const isMobile = window.innerWidth <= 768;
+      const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
+      
+      if (isMobile || (isTablet && !isInModal)) {
+        setIsSlotsOverlayOpen(true);
+      }
     }
   }, [selectedDate, isInModal]);
 
@@ -75,10 +81,18 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist, isInMo
     dispatch(resetCalendar());
   };
 
-  // Открываем форму в overlay на мобильных и планшетах (только для встроенного режима)
+  // Открываем форму в overlay на мобильных и планшетах
+  // На мобильных (<=768px) открываем всегда, на планшетах (<=1024px) только если не в модалке
   useEffect(() => {
-    if (!isInModal && currentStep === 'form' && window.innerWidth <= 1024) {
-      setIsFormOverlayOpen(true);
+    if (currentStep === 'form') {
+      const isMobile = window.innerWidth <= 768;
+      const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
+      
+      if (isMobile || (isTablet && !isInModal)) {
+        setIsFormOverlayOpen(true);
+      } else {
+        setIsFormOverlayOpen(false);
+      }
     } else {
       setIsFormOverlayOpen(false);
     }
