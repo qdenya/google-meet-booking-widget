@@ -9,7 +9,6 @@ import { SpecialistCard } from '../../features/specialist/SpecialistCard';
 import { BookingForm } from '../../features/booking/BookingForm';
 import { SuccessScreen } from '../../features/booking/SuccessScreen';
 import { SlotsOverlay } from '../SlotsOverlay/SlotsOverlay';
-import { BookingFormOverlay } from '../BookingFormOverlay/BookingFormOverlay';
 import { SelectedDateTime } from '../SelectedDateTime/SelectedDateTime';
 import type { SpecialistInfo } from '../../types';
 import styles from './BookingWidget.module.css';
@@ -24,7 +23,6 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist, isInMo
   const { currentStep } = useAppSelector((state) => state.booking);
   const { selectedDate } = useAppSelector((state) => state.calendar);
   const [isSlotsOverlayOpen, setIsSlotsOverlayOpen] = useState(false);
-  const [isFormOverlayOpen, setIsFormOverlayOpen] = useState(false);
 
   // Загружаем конфигурацию клиента (включая recaptcha токен)
   const { data: clientConfig, isLoading: isConfigLoading, error: configError } = useGetClientConfigQuery(undefined);
@@ -54,16 +52,10 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist, isInMo
     today.setHours(0, 0, 0, 0);
   }, []);
 
-  // Открываем overlay на мобильных и планшетах при выборе даты
-  // На мобильных (<=768px) открываем всегда, на планшетах (<=1024px) только если не в модалке
+  // Открываем overlay на мобильных и планшетах при выборе даты (только во встроенном режиме)
   useEffect(() => {
-    if (selectedDate) {
-      const isMobile = window.innerWidth <= 768;
-      const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
-      
-      if (isMobile || (isTablet && !isInModal)) {
-        setIsSlotsOverlayOpen(true);
-      }
+    if (!isInModal && selectedDate && window.innerWidth <= 1024) {
+      setIsSlotsOverlayOpen(true);
     }
   }, [selectedDate, isInModal]);
 
@@ -73,30 +65,6 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist, isInMo
     dispatch(resetBooking());
     dispatch(resetCalendar());
   };
-
-  // Обработчик закрытия BookingFormOverlay с возвратом к начальному состоянию
-  const handleCloseFormOverlay = () => {
-    setIsFormOverlayOpen(false);
-    dispatch(resetBooking());
-    dispatch(resetCalendar());
-  };
-
-  // Открываем форму в overlay на мобильных и планшетах
-  // На мобильных (<=768px) открываем всегда, на планшетах (<=1024px) только если не в модалке
-  useEffect(() => {
-    if (currentStep === 'form') {
-      const isMobile = window.innerWidth <= 768;
-      const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
-      
-      if (isMobile || (isTablet && !isInModal)) {
-        setIsFormOverlayOpen(true);
-      } else {
-        setIsFormOverlayOpen(false);
-      }
-    } else {
-      setIsFormOverlayOpen(false);
-    }
-  }, [currentStep, isInModal]);
 
   return (
     <div className={styles.widget}>
@@ -131,10 +99,12 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist, isInMo
             </div>
           </div>
 
-          <SlotsOverlay 
-            isOpen={isSlotsOverlayOpen} 
-            onClose={handleCloseSlotsOverlay} 
-          />
+          {!isInModal && (
+            <SlotsOverlay 
+              isOpen={isSlotsOverlayOpen} 
+              onClose={handleCloseSlotsOverlay}
+            />
+          )}
         </>
       )}
 
@@ -149,11 +119,6 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist, isInMo
               <BookingForm />
             </div>
           </div>
-
-          <BookingFormOverlay
-            isOpen={isFormOverlayOpen}
-            onClose={handleCloseFormOverlay}
-          />
         </>
       )}
 
