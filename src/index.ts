@@ -122,7 +122,7 @@ function openBookingModal(config: WidgetConfig): void {
             children: React.createElement(Modal, { 
               isOpen: true, 
               onClose: closeModal,
-              children: React.createElement(BookingWidget, { specialist: config.specialist })
+              children: React.createElement(BookingWidget, { specialist: config.specialist, isInModal: true })
             }) 
           }
         )

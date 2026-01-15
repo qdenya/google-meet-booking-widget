@@ -16,9 +16,10 @@ import styles from './BookingWidget.module.css';
 
 interface BookingWidgetProps {
   specialist?: SpecialistInfo;
+  isInModal?: boolean;
 }
 
-export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist }) => {
+export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist, isInModal = false }) => {
   const dispatch = useAppDispatch();
   const { currentStep } = useAppSelector((state) => state.booking);
   const { selectedDate } = useAppSelector((state) => state.calendar);
@@ -53,12 +54,12 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist }) => {
     today.setHours(0, 0, 0, 0);
   }, []);
 
-  // Открываем overlay на мобильных и планшетах при выборе даты
+  // Открываем overlay на мобильных и планшетах при выборе даты (только для встроенного режима)
   useEffect(() => {
-    if (selectedDate && window.innerWidth <= 1024) {
+    if (!isInModal && selectedDate && window.innerWidth <= 1024) {
       setIsSlotsOverlayOpen(true);
     }
-  }, [selectedDate]);
+  }, [selectedDate, isInModal]);
 
   // Обработчик закрытия SlotsOverlay с возвратом к начальному состоянию
   const handleCloseSlotsOverlay = () => {
@@ -74,14 +75,14 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ specialist }) => {
     dispatch(resetCalendar());
   };
 
-  // Открываем форму в overlay на мобильных и планшетах
+  // Открываем форму в overlay на мобильных и планшетах (только для встроенного режима)
   useEffect(() => {
-    if (currentStep === 'form' && window.innerWidth <= 1024) {
+    if (!isInModal && currentStep === 'form' && window.innerWidth <= 1024) {
       setIsFormOverlayOpen(true);
     } else {
       setIsFormOverlayOpen(false);
     }
-  }, [currentStep]);
+  }, [currentStep, isInModal]);
 
   return (
     <div className={styles.widget}>
