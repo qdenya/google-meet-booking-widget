@@ -15547,7 +15547,7 @@ const Gu = K1.withTypes(), zl = J1.withTypes(), qp = "_calendar_1kq8r_1", Bp = "
     ] }),
     /* @__PURE__ */ J.jsx("button", { onClick: f, className: Ve.newBookingButton, children: "Забронировать еще" })
   ] });
-}, t3 = "_overlay_q0uxt_1", n3 = "_content_q0uxt_24", l3 = "_closeButton_q0uxt_44", ys = {
+}, t3 = "_overlay_1iq69_1", n3 = "_content_1iq69_24", l3 = "_closeButton_1iq69_44", ys = {
   overlay: t3,
   content: n3,
   closeButton: l3
@@ -15624,7 +15624,7 @@ const Gu = K1.withTypes(), zl = J1.withTypes(), qp = "_calendar_1kq8r_1", Bp = "
       f === "success" && /* @__PURE__ */ J.jsx("div", { className: Xt.successContent, children: /* @__PURE__ */ J.jsx(e3, {}) })
     ] })
   ] });
-}, y3 = "_overlay_e4649_1", v3 = "_modal_e4649_25", g3 = "_closeButton_e4649_48", p3 = "_content_e4649_74", hc = {
+}, y3 = "_overlay_14swj_1", v3 = "_modal_14swj_25", g3 = "_closeButton_14swj_48", p3 = "_content_14swj_75", hc = {
   overlay: y3,
   modal: v3,
   closeButton: g3,

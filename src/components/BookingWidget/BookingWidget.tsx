@@ -9,7 +9,6 @@ import { SpecialistCard } from '../../features/specialist/SpecialistCard';
 import { BookingForm } from '../../features/booking/BookingForm';
 import { SuccessScreen } from '../../features/booking/SuccessScreen';
 import { SlotsOverlay } from '../SlotsOverlay/SlotsOverlay';
-import { SelectedDateTime } from '../SelectedDateTime/SelectedDateTime';
 import type { SpecialistInfo } from '../../types';
 import styles from './BookingWidget.module.css';
 
